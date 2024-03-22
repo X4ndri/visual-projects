@@ -12,6 +12,7 @@ elev_init = 22
 azim_init = -70
 elev_end = -90
 azim_end = -60
+offset = 0.3
 
 # Create a figure and subplots
 fig, axs = plt.subplots(3, 2, figsize=(10, 6))
@@ -51,7 +52,7 @@ def init():
     points = np.vstack((x, y, z))
     ax.cla()
     ax.view_init(elev=elev_init, azim=azim_init)
-    line3d, = ax.plot(x[:1], y[:1], z[:1], color=linecolor, linewidth=2)
+    line3d, = ax.plot(x[:1], y[:1], z[:1], color=linecolor, linewidth=3.5)
     # Set limits for the plot
     ax.set_xlim(-2, 2)
     ax.set_ylim(-2, 2)
@@ -106,11 +107,6 @@ axs[0,1].spines['right'].set_visible(False)
 axs[1,1].spines['right'].set_visible(False)
 axs[2,1].spines['right'].set_visible(False)
 
-
-
-axs[0,1].set_xticks([])
-
-offset = 0.3
 axs[0,1].set_ylim(x.min()-offset, x.max()+offset)
 axs[1,1].set_ylim(y.min()-offset, y.max()+offset)
 axs[2,1].set_ylim(z.min()-offset, z.max()+offset)
@@ -119,11 +115,16 @@ axs[0,1].set_ylabel('r1')
 axs[1,1].set_ylabel('r2')
 axs[2,1].set_ylabel('r3')
 
-linex, = axs[0,1].plot(time[:1], x[:1], color=linecolor, linewidth=5)
-liney, = axs[1,1].plot(time[:1], y[:1], color=linecolor, linewidth=5)
-linez, = axs[2,1].plot(time[:1], z[:1], color=linecolor, linewidth=5)
+
+axs[0,1].set_xticks([])
+
+
+linex, = axs[0,1].plot(time[:1], x[:1], color=linecolor, linewidth=3.5)
+liney, = axs[1,1].plot(time[:1], y[:1], color=linecolor, linewidth=3.5)
+linez, = axs[2,1].plot(time[:1], z[:1], color=linecolor, linewidth=3.5)
 
 
 # Create the animation
 ani = animation.FuncAnimation(fig, update, frames=time.max(), fargs=(line3d, linex, liney, linez, points, time, ax, pp), interval=35)
-ani.save(Path(__file__).parent.parent.joinpath("outputs/animation_rates.gif"), writer='pillow', fps=24,dpi=400)
+plt.show()
+# ani.save(Path(__file__).parent.parent.joinpath("outputs/animation_rates.gif"), writer='pillow', fps=24,dpi=400)

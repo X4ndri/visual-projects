@@ -131,4 +131,4 @@ linez, = axs[2,1].plot(time[:1], z[:1], color=linecolor)
 
 # Create the animation
 ani = animation.FuncAnimation(fig, update, frames=time.max(), fargs=(line3d, linex, liney, linez, points, time, ax, pp), interval=35)
-ani.save("./outputs/animation_rates_transparent.gif", writer='pillow', fps=24,savefig_kwargs={"transparent": True})
+ani.save("./outputs/animation_rates_transparent.gif", writer='imagemagick', fps=24,savefig_kwargs={"transparent": True})

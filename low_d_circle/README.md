@@ -1,3 +1,3 @@
 ## Low-D Circle:
 
-<img src="outputs/animation_rates.gif">
+<img src="outputs/animation_rate.gif">

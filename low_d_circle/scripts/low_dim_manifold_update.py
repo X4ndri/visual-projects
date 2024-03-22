@@ -111,7 +111,7 @@ axs[0,1].set_ylim(x.min()-offset, x.max()+offset)
 axs[1,1].set_ylim(y.min()-offset, y.max()+offset)
 axs[2,1].set_ylim(z.min()-offset, z.max()+offset)
 
-axs[0,1].set_ylabel('r1')
+axs[0,1].set_ylabel('r1111')
 axs[1,1].set_ylabel('r2')
 axs[2,1].set_ylabel('r3')
 
@@ -125,6 +125,7 @@ linez, = axs[2,1].plot(time[:1], z[:1], color=linecolor, linewidth=3.5)
 
 
 # Create the animation
+print(f'Saving to: {Path(__file__).parent.parent.joinpath("outputs/animation_rates.gif")}')
 ani = animation.FuncAnimation(fig, update, frames=time.max(), fargs=(line3d, linex, liney, linez, points, time, ax, pp), interval=35)
-# plt.show()
 ani.save(Path(__file__).parent.parent.joinpath("outputs/animation_rates.gif"), writer='pillow', fps=24,dpi=400)
+# plt.show()

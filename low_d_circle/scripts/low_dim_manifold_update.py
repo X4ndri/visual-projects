@@ -24,10 +24,9 @@ axs[2, 0].remove()
 
 # # lets call the 3d plot ax
 ax = fig.add_subplot(3, 2, 1, projection='3d')
-# Adjust the position of the remaining subplot in the first column to occupy the entire column space
-ax.set_position([0.1, 0.1, 0.4, 0.8])  # Adjust position as needed
+ax.set_position([0.0, 0, 0.4, 0.9]) 
 
-# Function to generate points on the curve lying on the oblique plane
+
 def generate_curve_points(num_points=100):
     t = np.linspace(0, 2*np.pi, num_points)
     x = np.sin(t)
@@ -35,7 +34,6 @@ def generate_curve_points(num_points=100):
     z = x + y
     return x, y, z
 
-# Function to update the animation
 def update(num, line3d, linex, liney, linez, points, time, ax, pp):
     line3d.set_data(points[:2, :num])
     line3d.set_3d_properties(points[2, :num])
@@ -45,8 +43,6 @@ def update(num, line3d, linex, liney, linez, points, time, ax, pp):
     if num==time.max()-50:
         ax.plot_surface(*pp, alpha=0.3, color='gray', label='plane')
 
-
-# Generate data points for the curve lying on the oblique plane
 
 def init():
     print('resetting')
@@ -59,14 +55,14 @@ def init():
     # Set limits for the plot
     ax.set_xlim(-2, 2)
     ax.set_ylim(-2, 2)
-    ax.set_zlim(0, 4)
+    ax.set_zlim(-2, 2)
 
     ax.grid(False)
     ax.axis('off')
 
-    ax.set_xlim(-3, 3)  # Adjusted x-axis limits
-    ax.set_ylim(-3, 3)  # Adjusted y-axis limits
-    ax.set_zlim(-3, 3)  # Adjusted z-axis limits
+    # ax.set_xlim(-3, 3)
+    # ax.set_ylim(-3, 3) 
+    # ax.set_zlim(-3, 3)  
     ax.scatter(x[::4], y[::4], z[::4], c='cyan', alpha=0.2)
 
     # Draw the coordinate system
@@ -123,11 +119,11 @@ axs[0,1].set_ylabel('r1')
 axs[1,1].set_ylabel('r2')
 axs[2,1].set_ylabel('r3')
 
-linex, = axs[0,1].plot(time[:1], x[:1], color=linecolor)
-liney, = axs[1,1].plot(time[:1], y[:1], color=linecolor)
-linez, = axs[2,1].plot(time[:1], z[:1], color=linecolor)
+linex, = axs[0,1].plot(time[:1], x[:1], color=linecolor, linewidth=5)
+liney, = axs[1,1].plot(time[:1], y[:1], color=linecolor, linewidth=5)
+linez, = axs[2,1].plot(time[:1], z[:1], color=linecolor, linewidth=5)
 
 
 # Create the animation
 ani = animation.FuncAnimation(fig, update, frames=time.max(), fargs=(line3d, linex, liney, linez, points, time, ax, pp), interval=35)
-ani.save(Path(__file__).parent.parent.joinpath("outputs/test.gif"), writer='pillow', fps=24,dpi=5, savefig_kwargs={"transparent": True})
+ani.save(Path(__file__).parent.parent.joinpath("outputs/animation_rates.gif"), writer='pillow', fps=24,dpi=400)

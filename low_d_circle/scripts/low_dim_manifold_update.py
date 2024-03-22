@@ -4,8 +4,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.animation as animation
-import time as tm
-from IPython.display import HTML
+from pathlib import Path
 
 
 linecolor='magenta'
@@ -131,4 +130,4 @@ linez, = axs[2,1].plot(time[:1], z[:1], color=linecolor)
 
 # Create the animation
 ani = animation.FuncAnimation(fig, update, frames=time.max(), fargs=(line3d, linex, liney, linez, points, time, ax, pp), interval=35)
-ani.save("./outputs/animation_rates_transparent.gif", writer='imagemagick', fps=24,savefig_kwargs={"transparent": True})
+ani.save(Path(__file__).parent.parent.joinpath("outputs/test.gif"), writer='pillow', fps=24,dpi=5, savefig_kwargs={"transparent": True})

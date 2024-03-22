@@ -1,3 +1,3 @@
-
 ## Low-D Circle
-![](outputs/animation_rates_transparent.gif)
+
+<img src="outputs/animation_rates_transparent.gif" width="50%" height="50%"/>

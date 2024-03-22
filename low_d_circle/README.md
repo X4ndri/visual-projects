@@ -1,2 +1,3 @@
-# Low-D circle
-<iframe src="animation_rates.html" width="800" height="600"></iframe>
+
+
+![Low-D Circle](/animation_rates.gifscripts/animation_rates_transparent.gif)

@@ -86,10 +86,6 @@ pp = [xx,yy,zz]
 def plot_surface():
     ax.plot_surface(xx, yy, zz, alpha=0.3, color='gray', label='plane')
 
-# Plot the initial points
-
-# Plot the initial curve
-
 
 axs[0,1].set_xlim(time.min(), time.max())
 axs[1,1].set_xlim(time.min(), time.max())
@@ -133,12 +129,6 @@ liney, = axs[1,1].plot(time[:1], y[:1], color=linecolor)
 linez, = axs[2,1].plot(time[:1], z[:1], color=linecolor)
 
 
-
-
-
 # Create the animation
 ani = animation.FuncAnimation(fig, update, frames=time.max(), fargs=(line3d, linex, liney, linez, points, time, ax, pp), interval=35)
-html = ani.to_html5_video()
-with open('animation_rates.html', 'w') as f:
-    f.write(html)
-
+ani.save("./outputs/animation_rates_transparent.gif", writer='pillow', fps=24,savefig_kwargs={"transparent": True})

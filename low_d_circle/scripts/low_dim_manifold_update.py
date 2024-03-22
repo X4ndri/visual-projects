@@ -46,7 +46,7 @@ def update(num, line3d, linex, liney, linez, points, time, ax, pp):
 
 
 def init():
-    print('resetting')
+    print('intializing')
     x, y, z = generate_curve_points()
     time = np.arange(len(x))
     points = np.vstack((x, y, z))
@@ -126,5 +126,5 @@ linez, = axs[2,1].plot(time[:1], z[:1], color=linecolor, linewidth=3.5)
 
 # Create the animation
 ani = animation.FuncAnimation(fig, update, frames=time.max(), fargs=(line3d, linex, liney, linez, points, time, ax, pp), interval=35)
-plt.show()
-# ani.save(Path(__file__).parent.parent.joinpath("outputs/animation_rates.gif"), writer='pillow', fps=24,dpi=400)
+# plt.show()
+ani.save(Path(__file__).parent.parent.joinpath("outputs/animation_rates.gif"), writer='pillow', fps=24,dpi=400)

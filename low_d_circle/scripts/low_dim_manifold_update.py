@@ -111,9 +111,9 @@ axs[0,1].set_ylim(x.min()-offset, x.max()+offset)
 axs[1,1].set_ylim(y.min()-offset, y.max()+offset)
 axs[2,1].set_ylim(z.min()-offset, z.max()+offset)
 
-axs[0,1].set_ylabel('r1111')
-axs[1,1].set_ylabel('r2')
-axs[2,1].set_ylabel('r3')
+axs[0,1].set_ylabel('$r_1$')
+axs[1,1].set_ylabel('$r_2$')
+axs[2,1].set_ylabel('$r_3$')
 
 
 axs[0,1].set_xticks([])
